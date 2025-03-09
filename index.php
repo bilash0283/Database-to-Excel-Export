@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,23 +26,31 @@
                 </tr>
             </thead>
 
-            <?php 
-                $db = include('db.php');
-                $sqlagent = "SELECT * FROM `agents` WHERE `role`= 2 AND `status` = 1";
-                $res = mysqli_query($db,$sqlagent);
-                $sl = 0;
-                while($row = mysqli_fetch_assoc($res)){
-                    $sl = $sl ++;
-                    $name = $row['name'];
-                    $email = $row['email'];
-                    $phone = $row['phone'];
-                    $address = $row['address'];
-                    $company = $row['company'];
+            <?php
+            $db = mysqli_connect('localhost', 'root', '', 'gsc');
+
+            if ($db) {
+                echo "Database Connect Successfully";
+            } else {
+                echo "Database Connect Failed";
+            }
+
+            $sqlagent = "SELECT * FROM `agents` WHERE `role`= 2 AND `status` = 1";
+            $res = mysqli_query($db, $sqlagent);
+            
+            $sl = 1;
+            while($row = mysqli_fetch_assoc($res)){
+                $id = $row['id'];
+                $name = $row['name'];
+                $email = $row['email'];
+                $phone = $row['phone'];
+                $address = $row['address'];
+                $company = $row['company'];
             ?>
 
             <tbody>
                 <tr>
-                    <td><?php echo $sl; ?></td>
+                    <td><?php echo $sl++; ?></td>
                     <td><?php echo $name; ?></td>
                     <td><?php echo $email; ?></td>
                     <td><?php echo $phone; ?></td>
@@ -63,4 +72,5 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
