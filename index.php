@@ -27,7 +27,7 @@
 
             <?php 
                 $db = include('db.php');
-                $sqlagent = "SELECT * FROM agents";
+                $sqlagent = "SELECT * FROM `agents` WHERE `role`= 2 AND `status` = 1";
                 $res = mysqli_query($db,$sqlagent);
                 $sl = 0;
                 while($row = mysqli_fetch_assoc($res)){
