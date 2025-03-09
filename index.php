@@ -12,7 +12,7 @@
 <body>
     <div class="container mx-auto my-5">
         <h2 class="text-center py-4">Database All Data show</h2>
-        <a href="#" class="btn btn-sm btn-success mb-3 ">Export to Excel</a>
+        <a href="export.php" class="btn btn-sm btn-success mb-3 ">Export to Excel</a>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -30,7 +30,7 @@
             $db = mysqli_connect('localhost', 'root', '', 'gsc');
 
             if ($db) {
-                echo "Database Connect Successfully";
+                // echo "Database Connect Successfully";
             } else {
                 echo "Database Connect Failed";
             }
