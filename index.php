@@ -11,7 +11,7 @@
 <body>
     <div class="container mx-auto my-5">
         <h2 class="text-center py-4">Database All Data show</h2>
-        <a href="#" class="btn btn-sm btn-success mb-3 float-right">Export to Excel</a>
+        <a href="#" class="btn btn-sm btn-success mb-3 ">Export to Excel</a>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -25,14 +25,28 @@
                 </tr>
             </thead>
 
+            <?php 
+                $db = include('db.php');
+                $sqlagent = "SELECT * FROM agents";
+                $res = mysqli_query($db,$sqlagent);
+                $sl = 0;
+                while($row = mysqli_fetch_assoc($res)){
+                    $sl = $sl ++;
+                    $name = $row['name'];
+                    $email = $row['email'];
+                    $phone = $row['phone'];
+                    $address = $row['address'];
+                    $company = $row['company'];
+            ?>
+
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Bilash Kumar mondol</td>
-                    <td>bilash@ci-gsc.com</td>
-                    <td>0170537343</td>
-                    <td>Gulshan Dhaka</td>
-                    <td>GSC</td>
+                    <td><?php echo $sl; ?></td>
+                    <td><?php echo $name; ?></td>
+                    <td><?php echo $email; ?></td>
+                    <td><?php echo $phone; ?></td>
+                    <td><?php echo $address; ?></td>
+                    <td><?php echo $company; ?></td>
                     <td>
                         <div class="btn-group">
                             <a href="#" class="btn btn-sm btn-warning ">Edit</a>
@@ -41,6 +55,7 @@
                     </td>
                 </tr>
             </tbody>
+            <?php } ?>
         </table>
     </div>
 
